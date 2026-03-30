@@ -66,10 +66,10 @@ export default function AboutPage() {
             </div>
             {/* Right: stats */}
             <div className="lg:w-1/2 grid grid-cols-2 gap-4">
-              {stats.map((s) => (
-                <div key={s.label} className="bg-white/[0.06] border border-white/10 rounded-2xl p-6 text-center backdrop-blur-sm hover:bg-white/[0.10] transition-colors">
-                  <div className="text-3xl font-black text-white mb-1">{s.num}</div>
-                  <div className="text-slate-400 text-sm">{s.label}</div>
+              {stats.map((stat) => (
+                <div key={stat.label} className="bg-white/[0.06] border border-white/10 rounded-2xl p-6 text-center backdrop-blur-sm hover:bg-white/[0.10] transition-colors">
+                  <div className="text-3xl font-black text-white mb-1">{stat.num}</div>
+                  <div className="text-slate-400 text-sm">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -114,8 +114,8 @@ export default function AboutPage() {
                 </span>
               </h2>
               <div className="space-y-4 text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-                {story.paragraphs.map((p, i) => (
-                  <p key={i}>{p}</p>
+                {story.paragraphs.map((paragraph, paragraphIndex) => (
+                  <p key={paragraphIndex}>{paragraph}</p>
                 ))}
               </div>
               <div className="mt-8 flex flex-wrap gap-3">
@@ -136,12 +136,12 @@ export default function AboutPage() {
         <Container>
           <SectionHeader badge={t.servBadge} heading={t.servH} headingAccent={t.servA} className="mb-10" />
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-            {services.map((s) => (
-              <div key={s.label} className="flex flex-col items-center gap-3 p-5 rounded-2xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700/50 text-center hover:border-red-200 dark:hover:border-red-500/30 hover:shadow-md transition-all group">
+            {services.map((service) => (
+              <div key={service.label} className="flex flex-col items-center gap-3 p-5 rounded-2xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700/50 text-center hover:border-red-200 dark:hover:border-red-500/30 hover:shadow-md transition-all group">
                 <div className="w-12 h-12 rounded-xl bg-red-50 dark:bg-red-500/10 flex items-center justify-center text-red-500 group-hover:scale-110 transition-transform">
-                  <IconMapper name={s.icon} className="w-6 h-6" />
+                  <IconMapper name={service.icon} className="w-6 h-6" />
                 </div>
-                <span className="text-sm font-semibold text-slate-700 dark:text-slate-200 leading-tight">{s.label}</span>
+                <span className="text-sm font-semibold text-slate-700 dark:text-slate-200 leading-tight">{service.label}</span>
               </div>
             ))}
           </div>
@@ -157,8 +157,8 @@ export default function AboutPage() {
                 <div className="w-10 h-10 rounded-xl bg-red-50 dark:bg-red-500/10 flex items-center justify-center text-red-500 mb-4"><IconMapper name={card.icon} className="w-5 h-5" /></div>
                 <h4 className="font-bold text-slate-900 dark:text-white mb-2">{card.title}</h4>
                 <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
-                  {card.lines.map((line, i) => (
-                    <span key={i}>{line}{i < card.lines.length - 1 && <br />}</span>
+                  {card.lines.map((line, lineIndex) => (
+                    <span key={lineIndex}>{line}{lineIndex < card.lines.length - 1 && <br />}</span>
                   ))}
                 </p>
               </div>
@@ -185,17 +185,17 @@ export default function AboutPage() {
         <Container>
           <SectionHeader badge={t.clientsBadge} heading={t.clientsH} headingAccent={t.clientsA} className="mb-10" />
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
-            {clients.map((c) => (
-              <div key={c.name} className="flex items-center justify-center p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700/50 hover:border-red-200 dark:hover:border-red-500/30 hover:shadow-md transition-all group">
+            {clients.map((client) => (
+              <div key={client.name} className="flex items-center justify-center p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700/50 hover:border-red-200 dark:hover:border-red-500/30 hover:shadow-md transition-all group">
                 <img
-                  src={c.img}
-                  alt={c.name}
+                  src={client.img}
+                  alt={client.name}
                   className="h-9 w-auto object-contain opacity-80 group-hover:opacity-100 group-hover:scale-105 group-hover:brightness-110 transition-all duration-300"
                   loading="lazy"
                   decoding="async"
                   onError={(e) => {
                     e.target.style.display = 'none'
-                    e.target.parentElement.innerHTML = `<span class="text-xs text-slate-400 font-medium text-center leading-tight">${c.name}</span>`
+                    e.target.parentElement.innerHTML = `<span class="text-xs text-slate-400 font-medium text-center leading-tight">${client.name}</span>`
                   }}
                 />
               </div>

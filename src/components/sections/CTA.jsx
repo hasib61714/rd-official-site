@@ -4,7 +4,7 @@ import { getText } from '../../data/translations'
 import Container from '../ui/Container'
 import Button from '../ui/Button'
 import Reveal from '../ui/Reveal'
-import { ctaData, footerData, L } from '../../data/siteData'
+import { ctaData, footerData, localize } from '../../data/siteData'
 
 export default function CTA() {
   const { lang } = useLanguage()
@@ -34,25 +34,25 @@ export default function CTA() {
             </p>
 
             <h2 className="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white leading-tight mb-5">
-              {L(lang, ctaData, 'heading')}{' '}
+              {localize(lang, ctaData, 'heading')}{' '}
               <span className="bg-gradient-to-r from-red-500 via-orange-400 to-amber-300 bg-clip-text text-transparent">
-                {L(lang, ctaData, 'headingAccent')}
+                {localize(lang, ctaData, 'headingAccent')}
               </span>
             </h2>
 
             <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed max-w-xl mx-auto mb-10">
-              {L(lang, ctaData, 'subheading')}
+              {localize(lang, ctaData, 'subheading')}
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button variant="primary" size="xl" href={ctaData.cta1.href} fullWidthOnMobile>
-                {L(lang, ctaData.cta1, 'label')}
+                {localize(lang, ctaData.cta1, 'label')}
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                 </svg>
               </Button>
               <Button variant="secondary" size="xl" href={ctaData.cta2.href} fullWidthOnMobile>
-                {L(lang, ctaData.cta2, 'label')}
+                {localize(lang, ctaData.cta2, 'label')}
               </Button>
             </div>
 

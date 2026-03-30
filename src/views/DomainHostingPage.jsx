@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Container from '../components/ui/Container'
 import ExploreServices from '../components/ui/ExploreServices'
 import PageMeta from '../components/ui/PageMeta'
-import { domainHostingData, L } from '../data/siteData'
+import { domainHostingData, localize } from '../data/siteData'
 import { useLanguage } from '../context/LanguageContext'
 import ExpandableText from '../components/ui/ExpandableText'
 import PageHero from '../components/ui/PageHero'
@@ -62,8 +62,8 @@ export default function DomainHostingPage() {
         <Container>
           <SectionHeader badge={t.sectionBadge} heading={t.sectionH} headingAccent={t.sectionA} />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {features.map((f) => (
-              <FeatureCard key={f.title} icon={f.icon} title={L(lang, f, 'title')} compact />
+            {features.map((feature) => (
+              <FeatureCard key={feature.title} icon={feature.icon} title={localize(lang, feature, 'title')} compact />
             ))}
           </div>
         </Container>

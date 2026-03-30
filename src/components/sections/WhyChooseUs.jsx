@@ -5,7 +5,7 @@ import Section from '../ui/Section'
 import Container from '../ui/Container'
 import SectionHeader from '../ui/SectionHeader'
 import Reveal from '../ui/Reveal'
-import { whyUsData, L } from '../../data/siteData'
+import { whyUsData, localize } from '../../data/siteData'
 import IconMapper from '../ui/IconMapper'
 
 function FeatureItem({ icon, title, description }) {
@@ -37,12 +37,12 @@ export default function WhyChooseUs() {
           headingAccent={getText(lang, 'whyUs.accent')}
         />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {items.map((item, i) => (
-            <Reveal key={item.title} delay={i * 70}>
+          {items.map((item, itemIndex) => (
+            <Reveal key={item.title} delay={itemIndex * 70}>
               <FeatureItem
                 icon={item.icon}
-                title={L(lang, item, 'title')}
-                description={L(lang, item, 'description')}
+                title={localize(lang, item, 'title')}
+                description={localize(lang, item, 'description')}
               />
             </Reveal>
           ))}

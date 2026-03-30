@@ -3,7 +3,7 @@ import { useScrollToTop } from '../hooks/useScrollToTop'
 import { useEffect } from 'react'
 import Link from 'next/link'
 import { useLanguage } from '../context/LanguageContext'
-import { homeInternetPageData, L } from '../data/siteData'
+import { homeInternetPageData, localize } from '../data/siteData'
 import Container from '../components/ui/Container'
 import ExploreServices from '../components/ui/ExploreServices'
 import PageMeta from '../components/ui/PageMeta'
@@ -121,8 +121,8 @@ export default function HomeInternetPage() {
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-red-600/20 to-slate-800/60 backdrop-blur-sm border border-white/10" />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="grid grid-cols-3 gap-6 p-8">
-                    {['Home','Wifi','Tv','Play','Smartphone','Radio','Shield','Zap','Clock'].map((icon, i) => (
-                      <div key={i} className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-white/70 backdrop-blur-sm border border-white/10">
+                    {['Home','Wifi','Tv','Play','Smartphone','Radio','Shield','Zap','Clock'].map((icon, iconIndex) => (
+                      <div key={iconIndex} className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-white/70 backdrop-blur-sm border border-white/10">
                         <IconMapper name={icon} className="w-5 h-5" />
                       </div>
                     ))}
@@ -145,8 +145,8 @@ export default function HomeInternetPage() {
       <div className="bg-slate-50 dark:bg-slate-900 py-16">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch mt-4">
-            {plans.map((plan, i) => (
-              <Reveal key={plan.name} delay={i * 100}>
+            {plans.map((plan, planIndex) => (
+              <Reveal key={plan.name} delay={planIndex * 100}>
                 <PricingCard
                   name={plan.name}
                   tag={plan.tag}
@@ -172,14 +172,14 @@ export default function HomeInternetPage() {
         <Container>
           <SectionHeader badge={t.whyBadge} heading={t.whyH} headingAccent={t.whyA} className="mb-10" />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {benefits.map((b) => (
-              <div key={b.title} className="flex gap-4 p-5 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700/50 hover:border-red-200 dark:hover:border-red-500/30 transition-colors">
+            {benefits.map((benefit) => (
+              <div key={benefit.title} className="flex gap-4 p-5 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700/50 hover:border-red-200 dark:hover:border-red-500/30 transition-colors">
                 <div className="w-12 h-12 rounded-xl bg-red-50 dark:bg-red-500/10 flex items-center justify-center text-red-500 shrink-0">
-                  <IconMapper name={b.icon} className="w-6 h-6" />
+                  <IconMapper name={benefit.icon} className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-slate-900 dark:text-white text-sm mb-1">{L(lang, b, 'title')}</h4>
-                  <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">{L(lang, b, 'desc')}</p>
+                  <h4 className="font-bold text-slate-900 dark:text-white text-sm mb-1">{localize(lang, benefit, 'title')}</h4>
+                  <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">{localize(lang, benefit, 'desc')}</p>
                 </div>
               </div>
             ))}

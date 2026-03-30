@@ -3,7 +3,7 @@ import { useLanguage } from '../../context/LanguageContext'
 import { useState, useEffect, useCallback } from 'react'
 import Button from '../ui/Button'
 import Container from '../ui/Container'
-import { heroSlides, L } from '../../data/siteData'
+import { heroSlides, localize } from '../../data/siteData'
 import { NAVBAR_HEIGHT_PX, HERO_SLIDE_INTERVAL_MS, HERO_SLIDE_TRANSITION_MS } from '../../constants'
 
 export default function Hero() {
@@ -45,21 +45,22 @@ export default function Hero() {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {/* Background Image Slides */}
-      {heroSlides.map((s, i) => (
+      {/* Background Image Slides — সব slide এর image একসাথে render হয়, active টা দেখা যায় বাকিগুলো hidden */}
+      {heroSlides.map((slideItem, index) => (
         <div
-          key={s.id}
+          key={slideItem.id}
           className={`absolute inset-0 transition-opacity duration-[900ms] ease-in-out ${
-            i === current ? 'opacity-100 z-10' : 'opacity-0 z-0'
+            index === current ? 'opacity-100 z-10' : 'opacity-0 z-0'
           }`}
         >
+          {/* Slide background image with slow zoom effect */}
           <div
             className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-[8000ms] ease-linear ${
-              i === current ? 'scale-110' : 'scale-100'
+              index === current ? 'scale-110' : 'scale-100'
             }`}
-            style={{ backgroundImage: `url(${s.image})` }}
+            style={{ backgroundImage: `url(${slideItem.image})` }}
           />
-          {/* Dark overlay */}
+          {/* Dark overlay — image এর উপর অন্ধকার layer যাতে text পড়া যায় */}
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/60 via-slate-950/40 to-slate-950/50" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/50" />
         </div>
@@ -79,7 +80,7 @@ export default function Hero() {
             className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-widest uppercase bg-red-500/15 text-red-400 border border-red-500/25 mb-7 animate-fade-up"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse" />
-            {L(lang, slide, 'badge')}
+            {localize(lang, slide, 'badge')}
           </div>
 
           {/* Headline */}
@@ -88,9 +89,9 @@ export default function Hero() {
             className="text-4xl sm:text-5xl lg:text-7xl font-medium text-white leading-[1.07] tracking-tight mb-6 animate-fade-up"
             style={{ animationDelay: '80ms' }}
           >
-            {L(lang, slide, 'headline')}{' '}
+            {localize(lang, slide, 'headline')}{' '}
             <span className="bg-gradient-to-r from-red-400 via-orange-300 to-amber-300 bg-clip-text text-transparent">
-              {L(lang, slide, 'headlineAccent')}
+              {localize(lang, slide, 'headlineAccent')}
             </span>
           </h1>
 
@@ -100,7 +101,7 @@ export default function Hero() {
             className="text-slate-300 text-lg sm:text-xl leading-relaxed max-w-xl mb-10 animate-fade-up"
             style={{ animationDelay: '160ms' }}
           >
-            {L(lang, slide, 'subheadline')}
+            {localize(lang, slide, 'subheadline')}
           </p>
 
           {/* CTA Buttons */}
@@ -110,13 +111,13 @@ export default function Hero() {
             style={{ animationDelay: '240ms' }}
           >
             <Button variant="primary" size="xl" href={slide.cta1.href} fullWidthOnMobile>
-              {L(lang, slide.cta1, 'label')}
+              {localize(lang, slide.cta1, 'label')}
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
               </svg>
             </Button>
             <Button variant="secondary" size="xl" href={slide.cta2.href} fullWidthOnMobile>
-              {L(lang, slide.cta2, 'label')}
+              {localize(lang, slide.cta2, 'label')}
             </Button>
           </div>
         </div>
@@ -143,15 +144,15 @@ export default function Hero() {
         </svg>
       </button>
 
-      {/* Dot Indicators */}
+      {/* Dot Indicators — নিচে ছোট dot, active slide এ লম্বা হয় */}
       <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-40 flex items-center gap-2.5">
-        {heroSlides.map((s, i) => (
+        {heroSlides.map((slideItem, index) => (
           <button
-            key={s.id}
-            onClick={() => goTo(i)}
-            aria-label={`Slide ${i + 1}`}
+            key={slideItem.id}
+            onClick={() => goTo(index)}
+            aria-label={`Slide ${index + 1}`}
             className={`rounded-full transition-all duration-500 ${
-              i === current
+              index === current
                 ? 'w-8 h-2 bg-gradient-to-r from-red-500 to-amber-400 shadow-lg shadow-orange-500/40'
                 : 'w-2 h-2 bg-white/30 hover:bg-white/60'
             }`}

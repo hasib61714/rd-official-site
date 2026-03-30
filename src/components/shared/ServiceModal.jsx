@@ -172,15 +172,15 @@ export default function ServiceModal({ service, onClose }) {
                 {lang === 'bn' ? 'মূল বৈশিষ্ট্য' : 'Key Highlights'}
               </h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
-                {service.highlights.map((h) => (
+                {service.highlights.map((highlight) => (
                   <div
-                    key={h.text}
+                    key={highlight.text}
                     className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-white/[0.06] hover:border-red-500/20 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors duration-200"
                   >
                     <span className="flex-shrink-0 text-red-400">
                       {ICONS[h.icon] || ICONS.bolt}
                     </span>
-                    <span className="text-slate-700 dark:text-slate-300 text-xs font-medium leading-snug">{h.text}</span>
+                    <span className="text-slate-700 dark:text-slate-300 text-xs font-medium leading-snug">{highlight.text}</span>
                   </div>
                 ))}
               </div>
@@ -194,8 +194,8 @@ export default function ServiceModal({ service, onClose }) {
                 {lang === 'bn' ? 'যা অন্তর্ভুক্ত' : "What's Included"}
               </h3>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4">
-                {service.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2.5 text-slate-600 dark:text-slate-300 text-sm">
+                {service.features.map((feature) => (
+                    <li key={feature} className="flex items-start gap-2.5 text-slate-600 dark:text-slate-300 text-sm">
                     <span className="flex-shrink-0 mt-0.5 w-4 h-4 rounded-full bg-red-500/15 flex items-center justify-center text-red-400">
                       <svg className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />

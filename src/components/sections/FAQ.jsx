@@ -6,7 +6,7 @@ import Section from '../ui/Section'
 import Container from '../ui/Container'
 import SectionHeader from '../ui/SectionHeader'
 import Reveal from '../ui/Reveal'
-import { faqData, L } from '../../data/siteData'
+import { faqData, localize } from '../../data/siteData'
 
 function AccordionItem({ question, answer, isOpen, onToggle }) {
   return (
@@ -55,7 +55,7 @@ export default function FAQ() {
   const { items } = faqData
   const [openIndex, setOpenIndex] = useState(0)
 
-  const toggle = (i) => setOpenIndex(openIndex === i ? null : i)
+  const toggle = (toggleIndex) => setOpenIndex(openIndex === toggleIndex ? null : toggleIndex)
 
   return (
     <Section id="faq" className="bg-white dark:bg-slate-900">
@@ -67,13 +67,13 @@ export default function FAQ() {
         />
 
         <div className="max-w-3xl mx-auto space-y-3">
-          {items.map((item, i) => (
-            <Reveal key={item.question} delay={i * 70}>
+          {items.map((item, itemIndex) => (
+            <Reveal key={item.question} delay={itemIndex * 70}>
               <AccordionItem
-                question={L(lang, item, 'question')}
-                answer={L(lang, item, 'answer')}
-                isOpen={openIndex === i}
-                onToggle={() => toggle(i)}
+                question={localize(lang, item, 'question')}
+                answer={localize(lang, item, 'answer')}
+                isOpen={openIndex === itemIndex}
+                onToggle={() => toggle(itemIndex)}
               />
             </Reveal>
           ))}

@@ -9,42 +9,42 @@ const DEFAULT_IMAGE = `${SITE}/images/og-cover.jpg`
 // Find or create a <meta> element and set its content
 function setMeta(name, content, isProp = false) {
   const attr = isProp ? 'property' : 'name'
-  let el = document.querySelector(`meta[${attr}="${name}"]`)
-  if (!el) {
-    el = document.createElement('meta')
-    el.setAttribute(attr, name)
-    document.head.appendChild(el)
+  let metaElement = document.querySelector(`meta[${attr}="${name}"]`)
+  if (!metaElement) {
+    metaElement = document.createElement('meta')
+    metaElement.setAttribute(attr, name)
+    document.head.appendChild(metaElement)
   }
-  el.setAttribute('content', content)
+  metaElement.setAttribute('content', content)
 }
 
 export default function PageMeta({ title, description, image }) {
   useEffect(() => {
-    const t   = title       ? `${title} | Red Data` : DEFAULT_TITLE
-    const d   = description || DEFAULT_DESC
-    const img = image       || DEFAULT_IMAGE
-    const url = `${SITE}${window.location.pathname}`
+    const pageTitle   = title       ? `${title} | Red Data` : DEFAULT_TITLE
+    const pageDescription   = description || DEFAULT_DESC
+    const ogImage = image       || DEFAULT_IMAGE
+    const pageUrl = `${SITE}${window.location.pathname}`
 
-    document.title = t
+    document.title = pageTitle
 
-    setMeta('description', d)
-    setMeta('og:title',       t,   true)
-    setMeta('og:description', d,   true)
-    setMeta('og:image',       img, true)
-    setMeta('og:url',         url, true)
+    setMeta('description', pageDescription)
+    setMeta('og:title',       pageTitle,   true)
+    setMeta('og:description', pageDescription,   true)
+    setMeta('og:image',       ogImage, true)
+    setMeta('og:url',         pageUrl, true)
     setMeta('og:type',        'website', true)
     setMeta('twitter:card',        'summary_large_image')
-    setMeta('twitter:title',       t)
-    setMeta('twitter:description', d)
-    setMeta('twitter:image',       img)
+    setMeta('twitter:title',       pageTitle)
+    setMeta('twitter:description', pageDescription)
+    setMeta('twitter:image',       ogImage)
 
-    let canon = document.querySelector('link[rel="canonical"]')
-    if (!canon) {
-      canon = document.createElement('link')
-      canon.setAttribute('rel', 'canonical')
-      document.head.appendChild(canon)
+    let canonicalLink = document.querySelector('link[rel="canonical"]')
+    if (!canonicalLink) {
+      canonicalLink = document.createElement('link')
+      canonicalLink.setAttribute('rel', 'canonical')
+      document.head.appendChild(canonicalLink)
     }
-    canon.setAttribute('href', url)
+    canonicalLink.setAttribute('href', pageUrl)
   }, [title, description, image])
 
   return null

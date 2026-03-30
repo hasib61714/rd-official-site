@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import Container from '../components/ui/Container'
 import ExploreServices from '../components/ui/ExploreServices'
 import PageMeta from '../components/ui/PageMeta'
-import { dataConnectivityData, L } from '../data/siteData'
+import { dataConnectivityData, localize } from '../data/siteData'
 import { useLanguage } from '../context/LanguageContext'
 import ExpandableText from '../components/ui/ExpandableText'
 import PageHero from '../components/ui/PageHero'
@@ -66,8 +66,8 @@ export default function DataConnectivityPage() {
         <Container>
           <SectionHeader badge={t.sectionBadge} heading={t.sectionH} headingAccent={t.sectionA} />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map((f) => (
-              <FeatureCard key={f.title} icon={f.icon} title={L(lang, f, 'title')} desc={L(lang, f, 'desc')} />
+            {features.map((feature) => (
+              <FeatureCard key={feature.title} icon={feature.icon} title={localize(lang, feature, 'title')} desc={localize(lang, feature, 'desc')} />
             ))}
           </div>
         </Container>

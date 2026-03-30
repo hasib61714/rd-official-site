@@ -33,9 +33,9 @@ export default function Testimonials() {
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {visible.map((t, i) => (
-            <Reveal key={t.name + i} delay={(i % INITIAL_SHOW) * 80}>
-              <TestimonialCard {...t} />
+          {visible.map((testimonial, index) => (
+            <Reveal key={testimonial.name + index} delay={(index % INITIAL_SHOW) * 80}>
+              <TestimonialCard {...testimonial} />
             </Reveal>
           ))}
         </div>

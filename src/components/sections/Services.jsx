@@ -9,16 +9,16 @@ import SectionHeader from '../ui/SectionHeader'
 import ServiceCard from '../shared/ServiceCard'
 import Reveal from '../ui/Reveal'
 import IconMapper from '../ui/IconMapper'
-import { servicesData, L } from '../../data/siteData'
+import { servicesData, localize } from '../../data/siteData'
 
 export default function Services() {
   const { lang } = useLanguage()
   const localizedItems = useMemo(
     () => servicesData.items.map(item => ({
       ...item,
-      title: L(lang, item, 'title'),
-      description: L(lang, item, 'description'),
-      tag: L(lang, item, 'tag'),
+      title: localize(lang, item, 'title'),
+      description: localize(lang, item, 'description'),
+      tag: localize(lang, item, 'tag'),
     })),
     [lang]
   )
@@ -37,8 +37,8 @@ export default function Services() {
 
         {/* Featured: Corporate + Home Internet */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
-          {[corporate, homeInternet].map((service, i) => (
-            <Reveal key={service.title} delay={i * 100}>
+          {[corporate, homeInternet].map((service, serviceIndex) => (
+            <Reveal key={service.title} delay={serviceIndex * 100}>
               <Link
                 href={service.to || '/'}
                 className="group relative flex flex-col bg-gradient-to-br from-slate-900 to-slate-800 dark:from-slate-800 dark:to-slate-900 border border-white/[0.08] rounded-2xl p-7 hover:border-red-500/30 hover:shadow-2xl hover:shadow-red-500/10 hover:-translate-y-1 transition-all duration-300 overflow-hidden min-h-[200px]"
@@ -74,8 +74,8 @@ export default function Services() {
 
         {/* Other Services */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-stretch">
-          {rest.map((service, i) => (
-            <Reveal key={service.title} delay={i * 80} className="h-full">
+          {rest.map((service, serviceIndex) => (
+            <Reveal key={service.title} delay={serviceIndex * 80} className="h-full">
               <ServiceCard
                 icon={service.icon}
                 title={service.title}

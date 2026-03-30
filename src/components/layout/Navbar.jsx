@@ -6,7 +6,7 @@ import Container from '../ui/Container'
 import { useTheme } from '../../context/ThemeContext'
 import { useLang } from '../../context/LanguageContext'
 import { getText } from '../../data/translations'
-import { navServiceItems, contactBarData, L } from '../../data/siteData'
+import { navServiceItems, contactBarData, localize } from '../../data/siteData'
 import IconMapper from '../ui/IconMapper'
 
 // Service dropdown items
@@ -140,16 +140,16 @@ export default function Navbar() {
 
               {/* Right — social links */}
               <div className="flex items-center gap-1">
-                {contactBarData.socials.map((s) => (
+                {contactBarData.socials.map((social) => (
                   <a
-                    key={s.label}
-                    href={s.href}
+                    key={social.label}
+                    href={social.href}
                     target="_blank" rel="noopener noreferrer"
                     className="w-7 h-7 flex items-center justify-center rounded text-slate-400 hover:text-white hover:bg-white/10 transition-all duration-200"
-                    aria-label={s.label}
+                    aria-label={social.label}
                   >
                     <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d={s.path} />
+                      <path d={social.path} />
                     </svg>
                   </a>
                 ))}
@@ -235,8 +235,8 @@ export default function Navbar() {
                               pathname === item.to
                                 ? 'text-red-600 dark:text-red-400'
                                 : 'text-slate-700 dark:text-slate-200 group-hover:text-slate-900 dark:group-hover:text-white'
-                            }`}>{L(lang, item, 'label')}</p>
-                            <p className="text-[10px] text-slate-400 dark:text-slate-500 leading-snug mt-0.5">{L(lang, item, 'desc')}</p>
+                            }`}>{localize(lang, item, 'label')}</p>
+                            <p className="text-[10px] text-slate-400 dark:text-slate-500 leading-snug mt-0.5">{localize(lang, item, 'desc')}</p>
                           </div>
                         </Link>
                       ))}
@@ -389,8 +389,8 @@ export default function Navbar() {
                         <IconMapper name={item.icon} className="w-4 h-4" />
                       </span>
                       <div>
-                        <p className="font-semibold text-xs leading-snug">{L(lang, item, 'label')}</p>
-                        <p className="text-[10px] text-slate-400 leading-snug">{L(lang, item, 'desc')}</p>
+                        <p className="font-semibold text-xs leading-snug">{localize(lang, item, 'label')}</p>
+                        <p className="text-[10px] text-slate-400 leading-snug">{localize(lang, item, 'desc')}</p>
                       </div>
                     </Link>
                   ))}

@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import Container from '../components/ui/Container'
 import ExploreServices from '../components/ui/ExploreServices'
 import PageMeta from '../components/ui/PageMeta'
-import { managedServicesData, L } from '../data/siteData'
+import { managedServicesData, localize } from '../data/siteData'
 import IconMapper from '../components/ui/IconMapper'
 import { useLanguage } from '../context/LanguageContext'
 import ExpandableText from '../components/ui/ExpandableText'
@@ -69,26 +69,26 @@ export default function ManagedServicesPage() {
           <SectionHeader badge={t.sectionBadge} heading={t.sectionH} headingAccent={t.sectionA} />
 
           <div className="space-y-8">
-            {services.map((s, i) => (
-              <div key={s.title} className={`rounded-3xl border ${s.borderColor} ${s.bgColor} p-7 lg:p-9`}>
+            {services.map((service, index) => (
+              <div key={service.title} className={`rounded-3xl border ${service.borderColor} ${service.bgColor} p-7 lg:p-9`}>
                 <div className="flex flex-col lg:flex-row gap-6">
                   <div className="flex items-start gap-4 flex-1">
-                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${s.color} text-white flex items-center justify-center text-2xl shadow-lg shrink-0`}>
-                      <IconMapper name={s.icon} className="w-6 h-6" />
+                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${service.color} text-white flex items-center justify-center text-2xl shadow-lg shrink-0`}>
+                      <IconMapper name={service.icon} className="w-6 h-6" />
                     </div>
                     <div>
                       <div className="flex items-center gap-2 mb-2">
-                        <span className={`text-xs font-bold uppercase tracking-widest bg-gradient-to-r ${s.color} bg-clip-text text-transparent`}>{t.serviceLabel} {String(i + 1).padStart(2, '0')}</span>
+                        <span className={`text-xs font-bold uppercase tracking-widest bg-gradient-to-r ${service.color} bg-clip-text text-transparent`}>{t.serviceLabel} {String(index + 1).padStart(2, '0')}</span>
                       </div>
-                      <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white mb-3">{L(lang, s, 'title')}</h3>
-                      <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">{L(lang, s, 'desc')}</p>
+                      <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white mb-3">{localize(lang, service, 'title')}</h3>
+                      <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">{localize(lang, service, 'desc')}</p>
                     </div>
                   </div>
                   <div className="lg:w-64 shrink-0">
                     <ul className="space-y-2">
-                      {(lang === 'bn' && s.features_bn ? s.features_bn : s.features).map((feat) => (
+                      {(lang === 'bn' && service.features_bn ? service.features_bn : service.features).map((feat) => (
                         <li key={feat} className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
-                          <svg className={`w-4 h-4 bg-gradient-to-br ${s.color} bg-clip-text shrink-0`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} style={{ color: 'currentColor' }}>
+                          <svg className={`w-4 h-4 bg-gradient-to-br ${service.color} bg-clip-text shrink-0`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} style={{ color: 'currentColor' }}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                           </svg>
                           {feat}

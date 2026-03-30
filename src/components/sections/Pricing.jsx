@@ -8,7 +8,7 @@ import Container from '../ui/Container'
 import SectionHeader from '../ui/SectionHeader'
 import PricingCard from '../shared/PricingCard'
 import Reveal from '../ui/Reveal'
-import { pricingData, L } from '../../data/siteData'
+import { pricingData, localize } from '../../data/siteData'
 
 export default function Pricing() {
   const { lang } = useLanguage()
@@ -27,16 +27,16 @@ export default function Pricing() {
         />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start md:items-center mt-8">
-          {visiblePlans.map((plan, i) => (
-            <Reveal key={plan.name} delay={i * 100}>
+          {visiblePlans.map((plan, planIndex) => (
+            <Reveal key={plan.name} delay={planIndex * 100}>
               <PricingCard
                 {...plan}
-                tag={L(lang, plan, 'tag')}
-                vatBreakdown={L(lang, plan, 'vatBreakdown')}
-                period={L(lang, plan, 'period')}
-                oneTime={L(lang, plan, 'oneTime')}
-                features={L(lang, plan, 'features')}
-                cta={L(lang, plan, 'cta')}
+                tag={localize(lang, plan, 'tag')}
+                vatBreakdown={localize(lang, plan, 'vatBreakdown')}
+                period={localize(lang, plan, 'period')}
+                oneTime={localize(lang, plan, 'oneTime')}
+                features={localize(lang, plan, 'features')}
+                cta={localize(lang, plan, 'cta')}
               />
             </Reveal>
           ))}

@@ -11,18 +11,18 @@ export function useReveal(threshold = REVEAL_THRESHOLD) {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    const el = ref.current
-    if (!el) return
+    const targetElement = ref.current
+    if (!targetElement) return
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setVisible(true)
-          observer.unobserve(el)
+          observer.unobserve(targetElement)
         }
       },
       { threshold }
     )
-    observer.observe(el)
+    observer.observe(targetElement)
     return () => observer.disconnect()
   }, [threshold])
 

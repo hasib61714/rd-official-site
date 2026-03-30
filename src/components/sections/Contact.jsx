@@ -23,7 +23,7 @@ export default function Contact() {
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState('')
 
-  const handleChange = (e) => setForm((p) => ({ ...p, [e.target.name]: e.target.value }))
+  const handleChange = (e) => setForm((previousForm) => ({ ...previousForm, [e.target.name]: e.target.value }))
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -78,21 +78,21 @@ export default function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
           {/* Left — Contact Methods */}
           <div className="lg:col-span-2 flex flex-col gap-5">
-            {contactMethods.map((m, i) => (
-              <Reveal key={m.label} delay={i * 80}>
+            {contactMethods.map((method, methodIndex) => (
+              <Reveal key={method.label} delay={methodIndex * 80}>
                 <a
-                  href={m.href}
-                  target={m.external ? '_blank' : undefined}
-                  rel={m.external ? 'noreferrer' : undefined}
+                  href={method.href}
+                  target={method.external ? '_blank' : undefined}
+                  rel={method.external ? 'noreferrer' : undefined}
                   className="group flex items-start gap-4 p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-white/[0.08] hover:border-red-500/25 hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-all duration-300"
                 >
                   <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 flex items-center justify-center group-hover:bg-red-500/20 transition-colors duration-300">
-                    <ContactIcon iconKey={m.iconKey} />
+                    <ContactIcon iconKey={method.iconKey} />
                   </div>
                   <div>
-                    <p className="text-slate-500 text-xs font-medium uppercase tracking-wider mb-0.5">{m.label}</p>
-                    <p className="text-slate-800 dark:text-white font-semibold text-sm group-hover:text-red-500 dark:group-hover:text-red-400 transition-colors duration-200">{m.value}</p>
-                    <p className="text-slate-500 dark:text-slate-400 text-xs mt-0.5">{m.note}</p>
+                    <p className="text-slate-500 text-xs font-medium uppercase tracking-wider mb-0.5">{method.label}</p>
+                    <p className="text-slate-800 dark:text-white font-semibold text-sm group-hover:text-red-500 dark:group-hover:text-red-400 transition-colors duration-200">{method.value}</p>
+                    <p className="text-slate-500 dark:text-slate-400 text-xs mt-0.5">{method.note}</p>
                   </div>
                 </a>
               </Reveal>

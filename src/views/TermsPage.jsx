@@ -310,13 +310,13 @@ export default function TermsPage() {
                 <div className="rounded-2xl border border-slate-200 dark:border-white/[0.08] bg-slate-50 dark:bg-slate-800/40 p-5">
                   <p className="text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-4">Contents</p>
                   <nav className="space-y-1">
-                    {sections.map((s) => (
+                    {sections.map((section) => (
                       <a
-                        key={s.id}
-                        href={`#${s.id}`}
+                        key={section.id}
+                        href={`#${section.id}`}
                         className="block text-sm text-slate-600 dark:text-slate-400 hover:text-red-500 dark:hover:text-red-400 py-1 px-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-500/10 transition-all duration-150 leading-snug"
                       >
-                        {s.title}
+                        {section.title}
                       </a>
                     ))}
                   </nav>
@@ -362,8 +362,8 @@ export default function TermsPage() {
                       <h2 className="text-xl font-bold text-slate-900 dark:text-white">{section.title}</h2>
                     </div>
                     <div className="space-y-5 pl-4">
-                      {section.content.map((block, i) => (
-                        <div key={i} className={block.sub ? 'rounded-xl border border-slate-100 dark:border-white/[0.06] bg-slate-50 dark:bg-slate-800/30 p-5' : ''}>
+                      {section.content.map((block, blockIndex) => (
+                        <div key={blockIndex} className={block.sub ? 'rounded-xl border border-slate-100 dark:border-white/[0.06] bg-slate-50 dark:bg-slate-800/30 p-5' : ''}>
                           {block.sub && (
                             <p className="text-sm font-semibold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
                               <span className="w-1.5 h-1.5 rounded-full bg-red-500 flex-shrink-0" />

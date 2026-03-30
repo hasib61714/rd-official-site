@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import { useLanguage } from '../../context/LanguageContext'
 import Container from '../ui/Container'
-import { footerData, L } from '../../data/siteData'
+import { footerData, localize } from '../../data/siteData'
 
 export default function Footer() {
   const { lang } = useLanguage()
@@ -18,7 +18,7 @@ export default function Footer() {
             <Link href="/" className="inline-flex items-center mb-5">
               <img src="/RD Logo W.png" alt="Red Data" className="h-10 w-auto object-contain" loading="lazy" />
             </Link>
-            <p className="text-slate-400 text-sm leading-relaxed max-w-sm mb-6">{L(lang, footerData, 'description')}</p>
+            <p className="text-slate-400 text-sm leading-relaxed max-w-sm mb-6">{localize(lang, footerData, 'description')}</p>
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
                 <span className="text-red-500 mt-0.5">📍</span>
@@ -63,7 +63,7 @@ export default function Footer() {
           {/* Link Columns */}
           {columns.map((col) => (
             <div key={col.heading}>
-              <h3 className="text-white font-semibold text-sm tracking-wider uppercase mb-5">{L(lang, col, 'heading')}</h3>
+              <h3 className="text-white font-semibold text-sm tracking-wider uppercase mb-5">{localize(lang, col, 'heading')}</h3>
               <ul className="space-y-3">
                 {col.links.map((link) => (
                   <li key={link.label}>

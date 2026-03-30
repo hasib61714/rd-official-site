@@ -6,7 +6,7 @@ import IconMapper from '../components/ui/IconMapper'
 import Container from '../components/ui/Container'
 import ExploreServices from '../components/ui/ExploreServices'
 import PageMeta from '../components/ui/PageMeta'
-import { corporateInternetPageData, aboutPageData, L } from '../data/siteData'
+import { corporateInternetPageData, aboutPageData, localize } from '../data/siteData'
 import { useLanguage } from '../context/LanguageContext'
 import ExpandableText from '../components/ui/ExpandableText'
 import PageHero from '../components/ui/PageHero'
@@ -106,8 +106,8 @@ export default function CorporateInternetPage() {
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-red-600/20 to-slate-800/60 backdrop-blur-sm border border-white/10" />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="grid grid-cols-3 gap-6 p-8">
-                    {['Building2','Network','Globe','Server','Shield','Lock','Database','Layers','Zap'].map((icon, i) => (
-                      <div key={i} className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-white/70 backdrop-blur-sm border border-white/10">
+                    {['Building2','Network','Globe','Server','Shield','Lock','Database','Layers','Zap'].map((icon, iconIdx) => (
+                      <div key={iconIdx} className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-white/70 backdrop-blur-sm border border-white/10">
                         <IconMapper name={icon} className="w-5 h-5" />
                       </div>
                     ))}
@@ -131,20 +131,20 @@ export default function CorporateInternetPage() {
         <Container>
           <SectionHeader badge={t.fiberBadge} heading={t.fiberH} headingAccent={t.fiberA} />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8">
-            {fiberFeatures.map((f, i) => (
+            {fiberFeatures.map((feature, featureIndex) => (
               <div
-                key={f.title}
+                key={feature.title}
                 className="group relative p-7 rounded-2xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700/60 shadow-sm hover:shadow-xl hover:border-red-200 dark:hover:border-red-500/40 transition-all duration-300 hover:-translate-y-1 overflow-hidden"
               >
                 <span className="absolute top-4 right-5 text-7xl font-black text-slate-100 dark:text-slate-700/60 leading-none select-none group-hover:text-red-100 dark:group-hover:text-red-900/40 transition-colors">
-                  {String(i + 1).padStart(2, '0')}
+                  {String(featureIndex + 1).padStart(2, '0')}
                 </span>
                 <div className="relative z-10">
                   <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-red-500 to-rose-600 text-white flex items-center justify-center mb-5 shadow-lg shadow-red-500/30 group-hover:scale-110 transition-transform">
-                    <IconMapper name={f.icon} className="w-7 h-7" />
+                    <IconMapper name={feature.icon} className="w-7 h-7" />
                   </div>
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">{L(lang, f, 'title')}</h3>
-                  <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">{L(lang, f, 'desc')}</p>
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">{localize(lang, feature, 'title')}</h3>
+                  <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">{localize(lang, feature, 'desc')}</p>
                 </div>
               </div>
             ))}
@@ -185,8 +185,8 @@ export default function CorporateInternetPage() {
                     <IconMapper name={item.icon} className="w-6 h-6" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900 dark:text-white text-sm mb-1">{L(lang, item, 'title')}</h4>
-                    <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">{L(lang, item, 'desc')}</p>
+                    <h4 className="font-bold text-slate-900 dark:text-white text-sm mb-1">{localize(lang, item, 'title')}</h4>
+                    <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">{localize(lang, item, 'desc')}</p>
                   </div>
                 </div>
               ))}
@@ -200,20 +200,20 @@ export default function CorporateInternetPage() {
         <Container>
           <SectionHeader badge={t.clientsBadge} heading={t.clientsH} headingAccent={t.clientsA} subheading={t.clientsSub} />
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
-            {clients.map((c) => (
+            {clients.map((client) => (
               <div
-                key={c.name}
+                key={client.name}
                 className="flex items-center justify-center p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700/50 hover:border-red-200 dark:hover:border-red-500/30 hover:shadow-md transition-all group"
               >
                 <img
-                  src={c.img}
-                  alt={c.name}
+                  src={client.img}
+                  alt={client.name}
                   className="h-10 w-auto object-contain group-hover:scale-105 group-hover:brightness-110 opacity-80 group-hover:opacity-100 transition-all duration-300"
                   loading="lazy"
                   decoding="async"
                   onError={(e) => {
                     e.target.style.display = 'none'
-                    e.target.parentElement.innerHTML = `<span class="text-xs text-slate-400 font-medium text-center leading-tight">${c.name}</span>`
+                    e.target.parentElement.innerHTML = `<span class="text-xs text-slate-400 font-medium text-center leading-tight">${client.name}</span>`
                   }}
                 />
               </div>
@@ -227,10 +227,10 @@ export default function CorporateInternetPage() {
       <div className="bg-gradient-to-r from-red-600 to-rose-700 py-12">
         <Container>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center text-white">
-            {corpStats.map((s) => (
-              <div key={s.label}>
-                <div className="text-3xl sm:text-4xl font-black mb-1">{s.num}</div>
-                <div className="text-red-100 text-sm font-medium">{s.label}</div>
+            {corpStats.map((stat) => (
+              <div key={stat.label}>
+                <div className="text-3xl sm:text-4xl font-black mb-1">{stat.num}</div>
+                <div className="text-red-100 text-sm font-medium">{stat.label}</div>
               </div>
             ))}
           </div>

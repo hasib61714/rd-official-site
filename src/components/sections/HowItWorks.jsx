@@ -5,7 +5,7 @@ import Section from '../ui/Section'
 import Container from '../ui/Container'
 import SectionHeader from '../ui/SectionHeader'
 import Reveal from '../ui/Reveal'
-import { howItWorksData, L } from '../../data/siteData'
+import { howItWorksData, localize } from '../../data/siteData'
 import IconMapper from '../ui/IconMapper'
 
 export default function HowItWorks() {
@@ -30,8 +30,8 @@ export default function HowItWorks() {
           {/* Connecting line — desktop only */}
           <div className="hidden lg:block absolute top-10 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-transparent via-red-500/30 to-transparent z-0" />
 
-          {steps.map((step, i) => (
-            <Reveal key={step.number} delay={i * 100}>
+          {steps.map((step, stepIndex) => (
+            <Reveal key={step.number} delay={stepIndex * 100}>
               <div
                 className="relative flex flex-col items-center text-center group"
             >
@@ -40,19 +40,19 @@ export default function HowItWorks() {
                 <IconMapper name={step.icon} className="w-8 h-8 text-red-500" />
                 {/* Step number badge */}
                 <span className="absolute -top-2.5 -right-2.5 w-6 h-6 rounded-full bg-gradient-to-br from-red-500 to-amber-400 text-white text-[10px] font-black flex items-center justify-center shadow-lg shadow-orange-500/30">
-                  {i + 1}
+                  {stepIndex + 1}
                 </span>
               </div>
 
               <h3 className="text-slate-900 dark:text-white font-bold text-base mb-3 group-hover:text-red-400 transition-colors duration-200">
-                {L(lang, step, 'title')}
+                {localize(lang, step, 'title')}
               </h3>
               <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed max-w-[200px]">
-                {L(lang, step, 'description')}
+                {localize(lang, step, 'description')}
               </p>
 
               {/* Arrow between steps — mobile/tablet */}
-              {i < steps.length - 1 && (
+              {stepIndex < steps.length - 1 && (
                 <div className="lg:hidden flex justify-center mt-6 mb-2 text-red-500/40">
                   <svg className="w-5 h-5 rotate-90 sm:rotate-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />

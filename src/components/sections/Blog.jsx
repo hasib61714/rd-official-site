@@ -38,8 +38,8 @@ export default function Blog() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {blogPostsData.map((post, i) => (
-            <Reveal key={post.id} delay={i * 100}>
+          {blogPostsData.map((post, postIndex) => (
+            <Reveal key={post.id} delay={postIndex * 100}>
               <BlogPostCard {...post} />
             </Reveal>
           ))}

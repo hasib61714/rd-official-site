@@ -10,22 +10,22 @@ export default function Reveal({ children, direction = 'up', delay = 0, classNam
   const ref = useRef(null)
 
   useEffect(() => {
-    const el = ref.current
-    if (!el) return
+    const revealElement = ref.current
+    if (!revealElement) return
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          el.classList.add('is-visible')
-          observer.unobserve(el)
+          revealElement.classList.add('is-visible')
+          observer.unobserve(revealElement)
         }
       },
       { threshold: 0.05, rootMargin: '0px 0px -30px 0px' }
     )
-    observer.observe(el)
+    observer.observe(revealElement)
     return () => observer.disconnect()
   }, [])
 
-  const cls =
+  const revealClass =
     direction === 'left'  ? 'reveal-left'  :
     direction === 'right' ? 'reveal-right' :
     direction === 'scale' ? 'reveal-scale' :
@@ -34,7 +34,7 @@ export default function Reveal({ children, direction = 'up', delay = 0, classNam
   return (
     <div
       ref={ref}
-      className={`${cls} ${className}`}
+      className={`${revealClass} ${className}`}
       style={delay ? { transitionDelay: `${delay}ms`, willChange: 'opacity, transform' } : { willChange: 'opacity, transform' }}
     >
       {children}

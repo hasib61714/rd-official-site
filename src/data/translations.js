@@ -304,15 +304,15 @@ export const t = {
 // Helper hook-free function — call with (lang, path) e.g. getText(lang, 'nav.home')
 export function getText(lang, path) {
   const keys = path.split('.')
-  let val = t[lang] || t.en
+  let translationValue = t[lang] || t.en
   for (const k of keys) {
-    val = val?.[k]
-    if (val === undefined) {
+    translationValue = translationValue?.[k]
+    if (translationValue === undefined) {
       // fallback to English
-      let fb = t.en
-      for (const fk of keys) { fb = fb?.[fk] }
-      return fb ?? path
+      let fallbackValue = t.en
+      for (const fk of keys) { fallbackValue = fallbackValue?.[fk] }
+      return fallbackValue ?? path
     }
   }
-  return val
+  return translationValue
 }

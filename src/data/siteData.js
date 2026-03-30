@@ -1,9 +1,16 @@
-// Localization helper — returns obj.key_bn if lang==='bn' and the field exists, else obj.key
-export function L(lang, obj, key) {
-  const bnKey = key + '_bn'
-  if (lang === 'bn' && obj[bnKey] !== undefined) return obj[bnKey]
+// localize(lang, obj, key)
+// lang = current language ('en' or 'bn')
+// obj  = data object (e.g. a slide or plan)
+// key  = field name (e.g. 'title', 'badge')
+// Returns Bengali value (key_bn) if language is 'bn' and it exists, otherwise returns English value
+export function localize(lang, obj, key) {
+  const bengaliKey = key + '_bn'
+  if (lang === 'bn' && obj[bengaliKey] !== undefined) return obj[bengaliKey]
   return obj[key]
 }
+
+// Keep L as alias so existing code doesn't break
+export const L = localize
 
 export * from './nav'
 export * from './hero'

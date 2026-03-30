@@ -89,24 +89,24 @@ export default function Coverage() {
                 className="absolute inset-0 w-full h-full"
                 style={{ pointerEvents: 'none' }}
               >
-                {SERVICE_CITIES.map(({ city, lng, lat, size }, i) => {
-                  const x = toSvgX(lng)
-                  const y = toSvgY(lat)
-                  const r = size === 'lg' ? 10 : size === 'md' ? 6 : 4
-                  const dur = `${2 + (i % 4) * 0.4}s`
+                {SERVICE_CITIES.map(({ city, lng, lat, size }, cityIndex) => {
+                  const svgX = toSvgX(lng)
+                  const svgY = toSvgY(lat)
+                  const dotRadius = size === 'lg' ? 10 : size === 'md' ? 6 : 4
+                  const animationDuration = `${2 + (cityIndex % 4) * 0.4}s`
                   return (
                     <g key={city}>
                       {/* Pulse ring */}
-                      <circle cx={x} cy={y} r={r} fill="rgba(239,68,68,0.2)">
-                        <animate attributeName="r" values={`${r};${r * 3};${r}`} dur={dur} repeatCount="indefinite" />
-                        <animate attributeName="opacity" values="0.6;0;0.6" dur={dur} repeatCount="indefinite" />
+                      <circle cx={svgX} cy={svgY} r={dotRadius} fill="rgba(239,68,68,0.2)">
+                        <animate attributeName="r" values={`${dotRadius};${dotRadius * 3};${dotRadius}`} dur={animationDuration} repeatCount="indefinite" />
+                        <animate attributeName="opacity" values="0.6;0;0.6" dur={animationDuration} repeatCount="indefinite" />
                       </circle>
                       {/* Dot */}
-                      <circle cx={x} cy={y} r={r / 1.2} fill="#ef4444" opacity="0.95" />
+                      <circle cx={svgX} cy={svgY} r={dotRadius / 1.2} fill="#ef4444" opacity="0.95" />
                       {/* Label for divisional HQs */}
                       {size !== 'sm' && (
                         <text
-                          x={x + r + 3} y={y + 4}
+                          x={svgX + dotRadius + 3} y={svgY + 4}
                           fill="rgba(255,255,255,0.9)"
                           fontSize={size === 'lg' ? 16 : 16}
                           fontWeight="700"
@@ -134,10 +134,10 @@ export default function Coverage() {
             <div>
               {/* Coverage stat cards */}
               <div className="grid grid-cols-2 gap-4 mb-8">
-                {coverageStats.map((s) => (
-                  <div key={s.label} className="rounded-2xl bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-white/[0.08] p-5 text-center hover:border-red-500/20 transition-colors duration-300">
-                    <p className="text-3xl font-black bg-gradient-to-r from-red-400 to-amber-300 bg-clip-text text-transparent mb-1">{s.value}</p>
-                    <p className="text-slate-500 dark:text-slate-400 text-sm">{s.label}</p>
+                {coverageStats.map((stat) => (
+                  <div key={stat.label} className="rounded-2xl bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-white/[0.08] p-5 text-center hover:border-red-500/20 transition-colors duration-300">
+                    <p className="text-3xl font-black bg-gradient-to-r from-red-400 to-amber-300 bg-clip-text text-transparent mb-1">{stat.value}</p>
+                    <p className="text-slate-500 dark:text-slate-400 text-sm">{stat.label}</p>
                   </div>
                 ))}
               </div>
@@ -146,12 +146,12 @@ export default function Coverage() {
               <div className="mb-8">
                 <p className="text-slate-500 dark:text-slate-400 text-sm font-medium mb-4">{getText(lang, 'coverage.majorAreas')}</p>
                 <div className="flex flex-wrap gap-2">
-                  {districts.map((d) => (
+                  {districts.map((district) => (
                     <span
-                      key={d}
+                      key={district}
                       className="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-white/[0.07] text-slate-600 dark:text-slate-300 text-xs font-medium hover:border-red-500/30 hover:text-red-600 dark:hover:text-white transition-all duration-200 cursor-default"
                     >
-                      {d}
+                      {district}
                     </span>
                   ))}
                   <span className="px-3 py-1.5 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-medium">

@@ -14,7 +14,7 @@ export default function BlogDetailPage() {
   const params = useParams()
   const router = useRouter()
   const id = params?.id
-  const post = blogPostsData.find((p) => String(p.id) === id)
+  const post = blogPostsData.find((blogPost) => String(blogPost.id) === id)
 
   useEffect(() => {
     if (id && !post) router.replace('/blog')
@@ -74,25 +74,25 @@ export default function BlogDetailPage() {
         <Container>
           <div className="max-w-3xl mx-auto">
             <div className="prose prose-slate dark:prose-invert max-w-none">
-              {post.body.map((block, i) => {
+              {post.body.map((block, blockIndex) => {
                 if (block.type === 'h2') {
                   return (
-                    <h2 key={i} className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mt-10 mb-4 pb-2 border-b border-slate-100 dark:border-slate-800">
+                    <h2 key={blockIndex} className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mt-10 mb-4 pb-2 border-b border-slate-100 dark:border-slate-800">
                       {block.text}
                     </h2>
                   )
                 }
                 if (block.type === 'p') {
                   return (
-                    <p key={i} className="text-slate-600 dark:text-slate-300 leading-relaxed mb-5 text-base sm:text-lg">
+                    <p key={blockIndex} className="text-slate-600 dark:text-slate-300 leading-relaxed mb-5 text-base sm:text-lg">
                       {block.text}
                     </p>
                   )
                 }
                 if (block.type === 'ul') {
                   return (
-                    <ul key={i} className="mb-5 space-y-2">
-                      {block.items.map((item, j) => (
+                    <ul key={blockIndex} className="mb-5 space-y-2">
+                      {block.items.map((item, listItemIndex) => (
                         <li key={j} className="flex items-start gap-2 text-slate-600 dark:text-slate-300 text-base">
                           <span className="mt-1.5 w-2 h-2 rounded-full bg-red-500 shrink-0" />
                           {item}

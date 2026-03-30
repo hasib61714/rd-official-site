@@ -203,14 +203,14 @@ export default function SelfCornerPage() {
             <div className="flex-1">
               <SectionHeader center={false} badge={t.portalBadge} heading={t.portalH} headingAccent={t.portalA} subheading={t.portalS} className="mb-8" />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {features.map((f) => (
-                  <div key={f.title} className="flex gap-4 p-5 rounded-2xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700/50 hover:border-red-200 dark:hover:border-red-500/30 hover:shadow-md transition-all group">
+                {features.map((feature) => (
+                  <div key={feature.title} className="flex gap-4 p-5 rounded-2xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700/50 hover:border-red-200 dark:hover:border-red-500/30 hover:shadow-md transition-all group">
                     <div className="w-11 h-11 rounded-xl bg-red-50 dark:bg-red-500/10 flex items-center justify-center text-red-500 shrink-0 group-hover:scale-110 transition-transform">
-                      <IconMapper name={f.icon} className="w-6 h-6" />
+                      <IconMapper name={feature.icon} className="w-6 h-6" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-slate-900 dark:text-white text-sm mb-1">{f.title}</h4>
-                      <p className="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">{f.desc}</p>
+                      <h4 className="font-bold text-slate-900 dark:text-white text-sm mb-1">{feature.title}</h4>
+                      <p className="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">{feature.desc}</p>
                     </div>
                   </div>
                 ))}

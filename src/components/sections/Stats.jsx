@@ -4,7 +4,7 @@ import Section from '../ui/Section'
 import Container from '../ui/Container'
 import StatCard from '../shared/StatCard'
 import Reveal from '../ui/Reveal'
-import { statsData, L } from '../../data/siteData'
+import { statsData, localize } from '../../data/siteData'
 
 export default function Stats() {
   const { lang } = useLanguage()
@@ -19,12 +19,12 @@ export default function Stats() {
         <div className="w-full h-px bg-gradient-to-r from-transparent via-red-500/30 to-transparent mb-10" />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {statsData.map((stat, i) => (
-            <Reveal key={stat.label} delay={i * 90}>
+          {statsData.map((stat, statIndex) => (
+            <Reveal key={stat.label} delay={statIndex * 90}>
               <StatCard
                 value={stat.value}
-                label={L(lang, stat, 'label')}
-                description={L(lang, stat, 'description')}
+                label={localize(lang, stat, 'label')}
+                description={localize(lang, stat, 'description')}
               />
             </Reveal>
           ))}
