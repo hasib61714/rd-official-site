@@ -91,8 +91,6 @@ export default function Footer() {
               {lang === 'bn' ? '(প্রা.) লিমিটেড। সকল স্বত্ব সংরক্ষিত।' : '(Pvt.) Limited. All rights reserved.'}
             </p>
             <div className="flex items-center gap-5">
-              <Link href="/privacy-policy" className="text-slate-500 text-xs hover:text-slate-300 transition-colors">{lang === 'bn' ? 'গোপনীয়তা নীতি' : 'Privacy Policy'}</Link>
-              <Link href="/terms" className="text-slate-500 text-xs hover:text-slate-300 transition-colors">{lang === 'bn' ? 'সেবার শর্তাবলী' : 'Terms of Service'}</Link>
               <a href="/tariff.pdf" target="_blank" rel="noopener noreferrer" className="text-slate-500 text-xs hover:text-slate-300 transition-colors">{lang === 'bn' ? 'BTRC ট্যারিফ' : 'BTRC Tariff'}</a>
             </div>
           </div>
