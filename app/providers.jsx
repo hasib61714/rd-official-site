@@ -1,5 +1,5 @@
 'use client'
-import { useEffect } from 'react'
+import { Suspense, useEffect } from 'react'
 import { usePathname, useSearchParams } from 'next/navigation'
 import { ThemeProvider } from '../src/context/ThemeContext'
 import { LanguageProvider } from '../src/context/LanguageContext'
@@ -33,7 +33,9 @@ export default function Providers({ children }) {
     <ThemeProvider>
       <LanguageProvider>
         <div className="min-h-screen bg-white dark:bg-slate-900 overflow-x-hidden">
-          <HashScrollHandler />
+          <Suspense fallback={null}>
+            <HashScrollHandler />
+          </Suspense>
           <Navbar />
           {children}
           <Footer />
