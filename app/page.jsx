@@ -1,4 +1,3 @@
-'use client'
 import Hero from '../src/components/sections/Hero'
 import Pricing from '../src/components/sections/Pricing'
 import Services from '../src/components/sections/Services'
