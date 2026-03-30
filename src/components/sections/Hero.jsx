@@ -1,14 +1,12 @@
 'use client'
 import { useLanguage } from '../../context/LanguageContext'
-import { getText } from '../../data/translations'
 import { useState, useEffect, useCallback } from 'react'
 import Button from '../ui/Button'
 import Container from '../ui/Container'
-import { heroData, heroSlides, L } from '../../data/siteData'
+import { heroSlides, L } from '../../data/siteData'
 import { NAVBAR_HEIGHT_PX, HERO_SLIDE_INTERVAL_MS, HERO_SLIDE_TRANSITION_MS } from '../../constants'
 
 export default function Hero() {
-  const { cta1, cta2 } = heroData
   const { lang } = useLanguage()
   const [current, setCurrent] = useState(0)
   const [animating, setAnimating] = useState(false)
@@ -111,14 +109,14 @@ export default function Hero() {
             className="flex flex-col sm:flex-row gap-4 animate-fade-up"
             style={{ animationDelay: '240ms' }}
           >
-            <Button variant="primary" size="xl" href={cta1.href} fullWidthOnMobile>
-              {getText(lang, 'hero.explore')}
+            <Button variant="primary" size="xl" href={slide.cta1.href} fullWidthOnMobile>
+              {L(lang, slide.cta1, 'label')}
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
               </svg>
             </Button>
-            <Button variant="secondary" size="xl" href={cta2.href} fullWidthOnMobile>
-              {getText(lang, 'hero.connect')}
+            <Button variant="secondary" size="xl" href={slide.cta2.href} fullWidthOnMobile>
+              {L(lang, slide.cta2, 'label')}
             </Button>
           </div>
         </div>
