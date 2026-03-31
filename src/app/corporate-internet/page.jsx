@@ -1,2 +1,2 @@
-import CorporateInternetPage from '../../src/views/CorporateInternetPage'
+import CorporateInternetPage from '../../views/CorporateInternetPage'
 export default CorporateInternetPage

@@ -1,2 +1,2 @@
-import AboutPage from '../../src/views/AboutPage'
+import AboutPage from '../../views/AboutPage'
 export default AboutPage

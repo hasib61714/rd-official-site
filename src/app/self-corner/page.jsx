@@ -1,2 +1,2 @@
-import SelfCornerPage from '../../src/views/SelfCornerPage'
+import SelfCornerPage from '../../views/SelfCornerPage'
 export default SelfCornerPage

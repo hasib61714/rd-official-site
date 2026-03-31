@@ -1,3 +1,3 @@
 'use client'
-import BlogDetailPage from '../../../src/views/BlogDetailPage'
+import BlogDetailPage from '../../../views/BlogDetailPage'
 export default BlogDetailPage

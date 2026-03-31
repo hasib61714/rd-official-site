@@ -1,2 +1,2 @@
-import BlogPage from '../../src/views/BlogPage'
+import BlogPage from '../../views/BlogPage'
 export default BlogPage

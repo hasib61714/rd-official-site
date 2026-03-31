@@ -1,12 +1,12 @@
 'use client'
 import { Suspense, useEffect } from 'react'
 import { usePathname, useSearchParams } from 'next/navigation'
-import { ThemeProvider } from '../src/context/ThemeContext'
-import { LanguageProvider } from '../src/context/LanguageContext'
-import Navbar from '../src/components/layout/Navbar'
-import Footer from '../src/components/layout/Footer'
-import FloatingButtons from '../src/components/layout/FloatingButtons'
-import { NAVBAR_HEIGHT_PX } from '../src/constants'
+import { ThemeProvider } from '../context/ThemeContext'
+import { LanguageProvider } from '../context/LanguageContext'
+import Navbar from '../components/layout/Navbar'
+import Footer from '../components/layout/Footer'
+import FloatingButtons from '../components/layout/FloatingButtons'
+import { NAVBAR_HEIGHT_PX } from '../constants'
 
 function HashScrollHandler() {
   const pathname = usePathname()

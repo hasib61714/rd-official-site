@@ -1,2 +1,2 @@
-import DomainHostingPage from '../../src/views/DomainHostingPage'
+import DomainHostingPage from '../../views/DomainHostingPage'
 export default DomainHostingPage

@@ -1,2 +1,2 @@
-import SmsServicePage from '../../src/views/SmsServicePage'
+import SmsServicePage from '../../views/SmsServicePage'
 export default SmsServicePage

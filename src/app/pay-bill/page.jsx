@@ -1,2 +1,2 @@
-import PayBillPage from '../../src/views/PayBillPage'
+import PayBillPage from '../../views/PayBillPage'
 export default PayBillPage

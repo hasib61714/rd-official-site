@@ -1,2 +1,2 @@
-import DataConnectivityPage from '../../src/views/DataConnectivityPage'
+import DataConnectivityPage from '../../views/DataConnectivityPage'
 export default DataConnectivityPage

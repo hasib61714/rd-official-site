@@ -1,2 +1,2 @@
-import ContactPage from '../../src/views/ContactPage'
+import ContactPage from '../../views/ContactPage'
 export default ContactPage

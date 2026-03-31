@@ -1,2 +1,2 @@
-import ManagedServicesPage from '../../src/views/ManagedServicesPage'
+import ManagedServicesPage from '../../views/ManagedServicesPage'
 export default ManagedServicesPage

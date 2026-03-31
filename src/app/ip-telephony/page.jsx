@@ -1,2 +1,2 @@
-import IpTelephonyPage from '../../src/views/IpTelephonyPage'
+import IpTelephonyPage from '../../views/IpTelephonyPage'
 export default IpTelephonyPage

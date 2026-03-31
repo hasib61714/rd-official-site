@@ -1,2 +1,2 @@
-import HomeInternetPage from '../../src/views/HomeInternetPage'
+import HomeInternetPage from '../../views/HomeInternetPage'
 export default HomeInternetPage

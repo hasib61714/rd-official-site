@@ -1,3 +1,3 @@
 'use client'
-import NotFoundPage from '../src/views/NotFoundPage'
+import NotFoundPage from '../views/NotFoundPage'
 export default NotFoundPage
