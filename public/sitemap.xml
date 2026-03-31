@@ -1,78 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://red-data-website.vercel.app/</loc>
+    <loc>https://reddata.com.bd/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://red-data-website.vercel.app/home-internet</loc>
+    <loc>https://reddata.com.bd/home-internet</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://red-data-website.vercel.app/corporate-internet</loc>
+    <loc>https://reddata.com.bd/corporate-internet</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://red-data-website.vercel.app/data-connectivity</loc>
+    <loc>https://reddata.com.bd/data-connectivity</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://red-data-website.vercel.app/ip-telephony</loc>
+    <loc>https://reddata.com.bd/ip-telephony</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://red-data-website.vercel.app/sms-service</loc>
+    <loc>https://reddata.com.bd/sms-service</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://red-data-website.vercel.app/domain-hosting</loc>
+    <loc>https://reddata.com.bd/domain-hosting</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://red-data-website.vercel.app/managed-services</loc>
+    <loc>https://reddata.com.bd/managed-services</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://red-data-website.vercel.app/about-us</loc>
+    <loc>https://reddata.com.bd/about-us</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://red-data-website.vercel.app/contact</loc>
+    <loc>https://reddata.com.bd/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://red-data-website.vercel.app/blog</loc>
+    <loc>https://reddata.com.bd/blog</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://red-data-website.vercel.app/pay-bill</loc>
+    <loc>https://reddata.com.bd/self-corner</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://red-data-website.vercel.app/self-corner</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://red-data-website.vercel.app/privacy-policy</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://red-data-website.vercel.app/terms</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
   </url>
 </urlset>
