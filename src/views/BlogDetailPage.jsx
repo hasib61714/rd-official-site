@@ -93,7 +93,7 @@ export default function BlogDetailPage() {
                   return (
                     <ul key={blockIndex} className="mb-5 space-y-2">
                       {block.items.map((item, listItemIndex) => (
-                        <li key={j} className="flex items-start gap-2 text-slate-600 dark:text-slate-300 text-base">
+                        <li key={listItemIndex} className="flex items-start gap-2 text-slate-600 dark:text-slate-300 text-base">
                           <span className="mt-1.5 w-2 h-2 rounded-full bg-red-500 shrink-0" />
                           {item}
                         </li>
