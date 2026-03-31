@@ -22,7 +22,6 @@ const TEXTS = {
     h1: 'Home Internet', h1a: 'Plans & Pricing',
     sub: 'Red Data Home Internet delivers ultra-fast fiber broadband engineered for modern households. From buffer-free 4K streaming and lag-free gaming to seamless video calls — all on one blisteringly fast connection with no hidden charges.',
     heroBtn: 'Get Connected',
-    vatNote: 'All prices include 5% VAT.',
     feat1: 'Mbps Bandwidth', feat2: 'Buffer-less social media & YouTube', feat3: 'Unlimited Device Support',
     feat4: 'Min TalkTime', feat5: 'OTT Subscription',
     feat6: '24/7 Customer Care', freeSetup: 'Free Installation', paidSetup: 'one-time setup',
@@ -41,7 +40,6 @@ const TEXTS = {
     h1: 'হোম ইন্টারনেট', h1a: 'প্ল্যান ও মূল্য',
     sub: 'রেড ডাটা হোম ইন্টারনেট আধুনিক পরিবারের জন্য আল্ট্রা-ফাস্ট ফাইবার ব্রডব্যান্ড সরবরাহ করে। বাফার-মুক্ত ৪কে স্ট্রিমিং, লেটেন্সি-মুক্ত গেমিং থেকে নিরবচ্ছিন্ন ভিডিও কল — সব কিছু এক দ্রুতগতির সংযোগে, কোনো লুকানো চার্জ ছাড়াই।',
     heroBtn: 'সংযোগ নিন',
-    vatNote: 'সকল মূল্যে ৫% ভ্যাট অন্তর্ভুক্ত।',
     feat1: 'এমবিপিএস ব্যান্ডউইথ', feat2: 'বাফার-মুক্ত সোশ্যাল মিডিয়া ও ইউটিউব', feat3: 'সীমাহীন ডিভাইস সংযোগ',
     feat4: 'মিনিট টকটাইম', feat5: 'ওটিটি সাবস্ক্রিপশন',
     feat6: '২৪/৭ গ্রাহক সেবা', freeSetup: 'বিনামূল্যে ইনস্টলেশন', paidSetup: 'একবার সেটআপ',
@@ -161,9 +159,6 @@ export default function HomeInternetPage() {
               </Reveal>
             ))}
           </div>
-          <p className="text-center text-slate-500 dark:text-slate-500 text-sm mt-10">
-            {t.vatNote}
-          </p>
         </Container>
       </div>
 
