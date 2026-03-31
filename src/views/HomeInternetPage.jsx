@@ -1,6 +1,5 @@
 'use client'
 import { useScrollToTop } from '../hooks/useScrollToTop'
-import { useEffect } from 'react'
 import Link from 'next/link'
 import { useLanguage } from '../context/LanguageContext'
 import { homeInternetPageData, localize } from '../data/siteData'

@@ -1,6 +1,5 @@
 'use client'
 import { useScrollToTop } from '../hooks/useScrollToTop'
-import { useEffect } from 'react'
 import Container from '../components/ui/Container'
 import ExploreServices from '../components/ui/ExploreServices'
 import PageMeta from '../components/ui/PageMeta'
