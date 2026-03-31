@@ -249,7 +249,6 @@ export const footerData = {
         { label: 'Why Choose Us', href: '/#why-us' },
         { label: 'Area Coverage', href: '/#coverage' },
         { label: 'News & Blog', href: '/blog' },
-        { label: 'Pay Bill', href: '/pay-bill' },
         { label: 'BTRC Approved Tariff', href: '/tariff.pdf' },
       ],
     },
