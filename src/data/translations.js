@@ -1,10 +1,6 @@
 // UI Translations — English (en) is primary, Bengali (bn) is secondary
 export const t = {
   en: {
-    // TopBar
-    topbar: 'Special Offer: Free installation + 1 month free on all plans this March 2026.',
-    topbarCta: 'Grab it now →',
-
     // Navbar
     nav: {
       home: 'Home',
@@ -150,10 +146,6 @@ export const t = {
   },
 
   bn: {
-    // TopBar
-    topbar: 'বিশেষ অফার: মার্চ ২০২৬-এ সকল প্ল্যানে বিনামূল্যে ইনস্টলেশন + ১ মাস ফ্রি।',
-    topbarCta: 'এখনই নিন →',
-
     // Navbar
     nav: {
       home: 'হোম',
